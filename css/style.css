@@ -1,0 +1,1900 @@
+/* -- RESET -- */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    line-height: calc(1em + 0.5rem);
+    /* border: solid red 1px; */
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Variables */
+
+:root {
+    --clr-background1: #f6f5f0;
+    --clr-footer-main1: #1d1d1d;
+    --clr-footer-secondary1: #474747;
+    --clr-footer-main2: #255b4d;
+    --clr-footer-secondary2: #50846a;
+    --clr-text-black: black;
+    --clr-text-white: white;
+}
+
+/* Generel styles */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    background-color: var(--clr-background1);
+}
+.container {
+    padding-top: 6.5rem;
+    max-width: 100%;
+}
+
+.footer__desktop {
+    display: none;
+}
+
+button {
+    max-width: 8rem;
+    background: none;
+    border-radius: 16px;
+    padding: 4px 1rem;
+    transition: all 0.4s;
+    font-family: 'Satoshi', sans-serif;
+    border: solid 1.5px var(--clr-text-black);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+hr {
+    width: 80%;
+    margin: auto;
+    border-style: dashed;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-text-white);
+}
+
+a:hover {
+    color: var(--clr-text-white);
+    background-color: rgba(71, 71, 71, 0.4);
+    transition: all 0.2s;
+}
+
+/* -----------------------------------------------
+--------------------Error page--------------------
+----------------------------------------------- */
+
+.error-container {
+    text-align: center;
+    font-size: 10em;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    margin: 1rem; 
+}
+
+#error_header {
+    text-align: center;
+    margin: auto;
+    padding: 3rem;
+}
+
+.error-container>span {
+    display: inline-block;
+    position: relative;
+    color: #222e60;
+}
+
+.error-container>span>span {
+    display: inline-block;
+    position: relative;
+}
+
+.error-container>span:nth-of-type(1) {
+    perspective: 1000px;
+    perspective-origin: 500% 50%;
+    color: #772019;
+}
+
+.error-container>span:nth-of-type(1)>span {
+    transform-origin: 50% 100% 0px;
+    transform: rotateX(0);
+    animation: easyoutelastic 8s infinite;
+}
+
+.error-container>span:nth-of-type(3) {
+    perspective: none;
+    perspective-origin: 50% 50%;
+    color: var(--clr-footer-main2);
+}
+
+.error-container>span:nth-of-type(3)>span {
+    transform-origin: 100% 100% 0px;
+    transform: rotate(0deg);
+    animation: rotatedrop 8s infinite;
+}
+
+@keyframes easyoutelastic {
+    0% {
+        transform: rotateX(0);
+    }
+
+    9% {
+        transform: rotateX(210deg);
+    }
+
+    13% {
+        transform: rotateX(150deg);
+    }
+
+    16% {
+        transform: rotateX(200deg);
+    }
+
+    18% {
+        transform: rotateX(170deg);
+    }
+
+    20% {
+        transform: rotateX(180deg);
+    }
+
+    60% {
+        transform: rotateX(180deg);
+    }
+
+    80% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+@keyframes rotatedrop {
+    0% {
+        transform: rotate(0);
+    }
+
+    10% {
+        transform: rotate(30deg);
+    }
+
+    15% {
+        transform: rotate(90deg);
+    }
+
+    70% {
+        transform: rotate(90deg);
+    }
+
+    80% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+.zoom-area {
+    max-width: 490px;
+    margin: 30px auto 30px;
+    font-size: 19px;
+    text-align: center;
+}
+
+.link-container {
+    text-align: center;
+}
+
+a.more-link {
+    text-transform: uppercase;
+    font-size: 13px;
+    background-color: var(--clr-footer-secondary1);
+    padding: 10px 15px;
+    border-radius: 32px;
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-decoration: none;
+    margin-top: 50px;
+    letter-spacing: 1px;
+}
+
+
+/* -----------------------------------------------
+---------------Mobile - header--------------------
+----------------------------------------------- */
+
+.header__container {
+    display: none;
+}
+
+.overlay {
+    height: 100%;
+    z-index: 9999;
+    width: 0;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: var(--clr-footer-main1);
+    overflow-x: hidden;
+    transition: all 0.2s;
+}
+
+.overlay-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+
+.overlay a {
+    padding: 0.5rem 2rem;
+    font-weight: 501;
+    text-decoration: none;
+    font-size: 3rem;
+    color: var(--clr-text-white);
+    display: block;
+    transition: 0.3s;
+    letter-spacing: -3px;
+    transform: scaleY(1.1);
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: var(--clr-footer-secondary1);
+}
+
+.inner-logo {
+    width: 90px;
+    padding: 1rem;
+    margin-left: 1rem;
+}
+
+.overlay .closebtn {
+    font-size: 60px;
+}
+
+.navtop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.line1 {
+    border: solid 0.75px var(--clr-footer-secondary1);
+    margin: 2rem;
+}
+
+.line2 {
+    border: solid 0.75px var(--clr-footer-secondary1);
+    margin: 2rem;
+}
+
+.beer-content a {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.beer-content h3 {
+    color: var(--clr-background1);
+    font-size: 1rem;
+    padding: 2rem 2rem 0 2rem;
+    font-weight: 300;
+}
+
+.mobile-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--clr-background1);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9988;
+}
+
+.burgerbutton {
+    font-size: 40px;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 75px;
+    margin: 1rem 0 0 0;
+    transition: all 0.4s;
+}
+
+/* -----------------------------------------------
+--------------Desktop - Header--------------------
+----------------------------------------------- */
+
+.col1 {
+    border-bottom: solid 1px var(--clr-footer-main1);
+    width: 50%;
+    margin-right: 1.5rem;
+}
+
+.col2 {
+    border-bottom: solid 1px var(--clr-footer-main1);
+    width: 50%;
+    margin-left: 1.5rem;
+}
+
+/* -----------------------------------------------
+---------------------Main content-----------------
+----------------------------------------------- */
+
+
+.page__title h1 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2rem;
+    padding: 3rem 0;
+}
+
+.page__title h3 {
+    text-align: center;
+    font-weight: 300;
+    padding: 1rem 0;
+}
+
+.hero__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 0;
+
+    margin: 2rem 0;
+    height: 400px;
+    background-image: url(../img/daasefront.webp);
+    background-position: center 100%;
+    background-size: cover;
+}
+
+.hero__section a {
+    padding: 0.4rem 1rem;
+}
+
+.hero__section p {
+    padding: 1rem;
+}
+
+.a-button {
+    border: 1px solid var(--clr-text-black);
+    border-radius: 34px;
+    color: var(--clr-text-black);
+    padding: 0.3rem 1rem;
+    font-size: 1rem;
+    max-width: 135px;
+}
+
+.hero__section h2 {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* -----------------------------------------------
+---------Product presentation - frontpage--------- 
+----------------------------------------------- */
+
+
+.product__pres {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.beerguy {
+    display: none;
+}
+
+.citrus {
+    display: none;
+}
+
+.paleale__showcase {
+    margin-bottom: 3rem;
+    background-color: #f1eeeb;
+    background-image: url(../img/frontdaase.webp);
+    height: 400px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.paleale__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 7rem;
+}
+
+.pilsner__showcase {
+    margin-bottom: 3rem;
+    background-color: #f1eeeb;
+    background-image: url(../img/frontdaase2.webp);
+    height: 400px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.product__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 3rem;
+}
+
+
+.forside__teaser {
+    padding: 2rem 1rem;
+}
+
+.forside__teaser p {
+    padding: 2rem 0 1rem 0;
+}
+
+.beerbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    gap: 1rem;
+    height: 300px;
+    color: var(--clr-text-white);
+
+    background-position: center center;
+    background-image: url(../img/oelbar.webp);
+    background-size: cover;
+    box-shadow: 0 3000px rgba(0, 0, 0, 0.5) inset;
+
+    padding: 0 8% 0 15%;
+}
+
+#bar__button {
+    border: solid 1.5px var(--clr-text-white);
+    color: var(--clr-text-white);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------
+---------------------Produktside------------------
+----------------------------------------------- */
+
+#product__pagetitle {
+    color: var(--clr-footer-main2);
+    text-transform: uppercase;
+    font-size: 3rem;
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+.product__sort {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+.product__sort button:hover {
+    color: var(--clr-footer-secondary2);
+    overflow: hidden;
+    border-bottom: solid 2px var(--clr-footer-secondary2);
+}
+
+.product__sort button {
+    outline: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    color: var(--clr-footer-main2);
+    font-weight: 500;
+    transition: all 0.1s;
+}
+
+.product__section {
+    padding: 1rem;
+}
+
+.product__section h3 {
+    padding-top: 1rem;
+}
+
+.product__wheatbeer,
+.product__paleale,
+.product__pilsner,
+.product__stout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.product__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    color: var(--clr-footer-secondary2);
+    padding: 1rem;
+}
+
+.product__header {
+    color: var(--clr-footer-main2);
+}
+
+.product__buttons {
+    display: flex;
+    gap: 12px;
+    padding: 1rem 0;
+}
+
+.button1 {
+    background-color: var(--clr-footer-main2);
+    color: var(--clr-text-white);
+    border-radius: 24px;
+    border: none;
+    padding: 0 0.5rem;
+    width: 120px;
+    height: 40px;
+    letter-spacing: 5px;
+    font-size: 1rem;
+}
+
+.button2 {
+    background-color: var(--clr-footer-main2);
+    color: var(--clr-text-white);
+    border: none;
+    border-radius: 32px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product__info p {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.vr__line {
+    border-left: solid 2px var(--clr-footer-secondary2);
+    height: 50px;
+}
+
+/* -------------------------
+---------Bar & Butik-------- 
+------------------------- */
+
+.bar__hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 500px;
+    text-transform: uppercase;
+    color: var(--clr-text-white);
+
+    background-image: url(../img/oelbar.webp);
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0 3000px rgba(0, 0, 0, 0.4) inset;
+}
+
+.bar__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    padding: 11rem 0;
+}
+
+.bar__header h1 {
+    font-weight: 400;
+}
+
+.bar__address {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    font-weight: 300;
+    font-size: 0.6rem;
+}
+
+.bar__teaser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.bar__teaser h1 {
+    font-size: 2em;
+}
+
+.bar__teaser p {
+    padding-top: 1rem;
+    margin: auto;
+    max-width: 390px;
+}
+
+.bar__img-left {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    gap: 2rem;
+}
+
+.bar__img-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.beer__header {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    text-transform: uppercase;
+    max-width: 100%;
+    margin: auto;
+    background-color: #e8e0d3;
+}
+
+.beer__header h1 {
+    font-size: 2rem;
+    padding-top: 4rem;
+}
+
+.slider {
+    background-color: #e8e0d3;
+    padding: 0 4rem 4rem 4rem;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: var(--clr-footer-main1);
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: 0.6s ease;
+    user-select: none;
+    border: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--clr-footer-secondary1);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: var(--clr-footer-main1);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+
+/* -------------------------
+---------Alkoholfri øl------ 
+------------------------- */
+
+
+.alkoholfri {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: auto;
+    max-width: 750px;
+}
+
+.alkoholfri h2,
+.alkoholfri h1 {
+    color: var(--clr-footer-main2);
+    margin: auto;
+    text-align: center;
+    padding: 0.6rem;
+}
+
+.alkoholfri h3 {
+    color: var(--clr-footer-main2);
+    margin: auto;
+    text-align: center;
+}
+
+.alkoholfri p {
+    color: var(--clr-footer-main2);
+    padding: 0.6rem;
+}
+
+.alkoholfri a {
+    margin: auto;
+    color: var(--clr-footer-main1);
+    border: solid 1px var(--clr-footer-main1);
+    border-radius: 32px;
+    padding: 0.3rem 1.2rem;
+}
+
+.slider-header {
+    background-color: var(--clr-footer-main2);
+    color: var(--clr-background1);
+}
+
+.slider-header h1 {
+    padding: 1rem;
+    text-transform: uppercase;
+}
+
+.slider-header p {
+    padding: 1rem;
+}
+
+.beer-slider {
+    background-color: var(--clr-footer-main2);
+}
+
+/* Slideshow container */
+.slider-container {
+    position: relative;
+    margin: auto;
+}
+
+.mybeers {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 5%;
+}
+
+.beer-image {
+    display: flex;
+}
+
+.mybeers img {
+    max-height: 600px;
+    display: flex;
+}
+
+.beer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+}
+
+.beer-header {
+    color: var(--clr-background1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    gap: 10px;
+}
+
+.beer-header p {
+    font-weight: 100;
+}
+
+.beer-header h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.beer-prodinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    color: var(--clr-text-white);
+    padding: 1rem;
+}
+
+.beer-prodinfo h6 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.beer-prodinfo p {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.product__link {
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+.product__link a {
+    border: 1px solid var(--clr-background1);
+    background-color: var(--clr-background1);
+    color: var(--clr-footer-main1);
+    border-radius: 32px;
+    padding: 0.4rem 2rem;
+}
+
+.beer-line {
+    border-left: 1.3px solid var(--clr-background1);
+    height: 50px;
+}
+
+
+/* Next & previous buttons */
+.prev1,
+.next1 {
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: var(--clr-background1);
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: 0.6s ease;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next1 {
+    right: 0;
+}
+
+
+/* -------------------------
+----------Footer-------- */
+
+.footer__primary {
+    background-color: var(--clr-footer-main1);
+    color: var(--clr-text-white);
+    padding: 1rem;
+}
+
+.footer__primary li,
+h2 {
+    font-weight: 400;
+}
+
+.footer_secondary {
+    background-color: var(--clr-footer-secondary1);
+    color: var(--clr-text-white);
+    padding: 1rem;
+}
+
+.footer__logo {
+    padding: 1rem 0;
+}
+
+.footer__info1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.footer__left {
+    padding: 0;
+}
+
+.footer__right {
+    padding: 0;
+    text-align: right;
+}
+
+.footer__info2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__primary hr {
+    border: solid 1px var(--clr-footer-secondary1);
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.footer__wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+    padding: 1rem 2rem;
+    background-color: var(--clr-footer);
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    display: none;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    user-select: none;
+}
+
+label div:first-child {
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.cross {
+    margin-bottom: 15px;
+}
+
+.cross:before,
+.cross:after {
+    content: '';
+    border-top: 2px solid var(--clr-text-white);
+    width: 15px;
+    display: block;
+    margin-top: 18px;
+    transition: 0.3s;
+}
+
+.cross:after {
+    transform: rotate(90deg);
+    margin-top: -2px;
+}
+
+.content {
+    font-size: 1rem;
+    margin: 5px 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height, .5s;
+}
+
+.content a {
+    display: flex;
+    margin: 15px 0 15px 25px;
+}
+
+.content h3 {
+    font-weight: 300;
+}
+
+.wrap a {
+    margin-bottom: 15px;
+}
+
+input:checked~.content {
+    max-height: 400px;
+    transition: max-height, 1s;
+}
+
+input:checked~label .cross:before {
+    transform: rotate(180deg);
+}
+
+input:checked~label .cross:after {
+    transform: rotate(0deg);
+}
+
+.footer_secondary-full {
+    display: none;
+}
+
+/* -----------------------------------------------
+------------------Media queries-------------------  
+----------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+    
+    /* -----------------------------------------------
+---------------------Header----------------------- 
+----------------------------------------------- */
+    
+    .mobile-menu {
+        display: none;
+    }
+
+    .header__container {
+        display: flex;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: var(--clr-background1);
+        margin-bottom: 1rem;
+        z-index: 9999;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 1rem 0 0 0;
+    }
+
+    .logo2 {
+        width: 30%;
+        margin: auto;
+        transition: all 0.4s;
+        padding-bottom: 0.5rem;
+    }
+
+    .header__container a {
+        color: var(--clr-text-black);
+        font-weight: 600;
+    }
+
+    .col1,
+    .col2 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .topnav {
+        overflow: hidden;
+    }
+
+    .header__icons {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+    }
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .active {
+        color: var(--clr-footer-main1);
+    }
+
+    .topnav .icon {
+        display: none;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        outline: none;
+        color: var(--clr-text-black);
+        background-color: inherit;
+        font-family: inherit;
+        margin: auto;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--clr-background1);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-top: 1.5rem;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: var(--clr-white);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-weight: 300;
+    }
+
+    .dropdown-content p {
+        padding: 5px;
+        font-weight: 600;
+    }
+
+    .topnav a:hover,
+    .dropdown:hover .dropbtn {
+        background-color: rgba(244, 240, 230, 0);
+        color: var(--clr-text-black);
+    }
+
+    .dropdown-content a:hover {
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
+
+/* -----------------------------------------------
+---------------------Main content-----------------
+----------------------------------------------- */
+
+
+
+/* Front page */
+
+    .page__title h1 {
+        font-size: 3rem;
+        padding-top: 3rem;
+    }
+
+    .page__title h3 {
+        padding: 1rem 0;
+        font-size: 2rem;
+    }
+
+    .hero__section {
+        height: 600px;
+    }
+
+    .hero__section h2 {
+        padding: 6rem 0 2rem 0;
+    }
+
+    .product__pres {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 2rem 0;
+        padding: 3rem 2rem;
+    }
+
+    .product__pres :nth-child(2) {
+        order: 1;
+    }
+
+    .product__pres :nth-child(3) {
+        order: 2;
+    }
+
+    .product__pres :nth-child(4) {
+        order: 3;
+    }
+
+    .product__pres :nth-child(6) {
+        order: 4;
+    }
+
+    .paleale__showcase {
+        margin: 0;
+    }
+
+    .paleale__text {
+        padding: 2.5rem 2rem;
+    }
+
+    .pilsner__showcase {
+        margin: 0;
+    }
+
+    .product__text {
+        padding: 2.5rem 2rem;
+        overflow: visible;
+    }
+
+    .forside__teaser {
+        padding: 2rem 4rem;
+    }
+
+    .beerbar {
+        height: 600px;
+    }
+
+
+    /* Product page */
+
+    .product__section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: end;
+    }
+
+    #product__pagetitle {
+        padding-top: 10rem;
+        padding-left: 2rem;
+        font-size: 4rem;
+    }
+
+    .product__sort {
+        padding-left: 2rem;
+    }
+
+    .product__sort button {
+        font-size: 1rem;
+    }
+
+
+    /* -------------------------
+---------Bar & Butik-------- 
+------------------------- */
+
+    .bar__hero {
+        height: 710px;
+    }
+
+    .bar__header {
+        font-size: 2rem;
+        padding: 17rem 0;
+    }
+
+    .bar__teaser h1 {
+        font-size: 2.5rem;
+    }
+
+    .bar__teaser p {
+        font-size: 1.5rem;
+        max-width: 420px;
+    }
+
+    .bar__img-selection {
+        padding: 1rem;
+    }
+
+    .bar__img-left {
+        width: 500px;
+    }
+
+    .bar__img-right {
+        margin-left: auto;
+        width: 500px;
+    }
+
+    /* -------------------------
+---------Alkoholfri øl------ 
+------------------------- */
+
+    .alkoholfri {
+        padding: 3rem;
+    }
+
+    .alkoholfri h1 {
+        font-size: 2rem;
+    }
+
+    .slider-header {
+        padding: 2rem;
+    }
+
+    .beer-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .beer-image {
+        margin: auto;
+    }
+
+    .beer-header p {
+        padding: 0 8rem;
+    }
+
+    /* Footer */
+
+    .footer__wrapper {
+        padding: 0 6rem;
+    }
+
+}
+
+@media screen and (min-width:1024px) {
+    
+    /* Front page */
+    
+    .page__title h1 {
+        font-size: 4rem;
+        padding-top: 6rem;
+    }
+
+    .hero__section {
+        padding: 8rem 0;
+        height: 800px;
+    }
+
+    .hero__section h2 {
+        font-size: 2.3rem;
+        padding: 2rem;
+    }
+
+    .product__pres {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 4rem 0;
+        padding: 4rem 2rem;
+    }
+
+    .product__pres :nth-child(1) {
+        order: 1;
+    }
+
+    .product__pres :nth-child(2) {
+        order: 2;
+    }
+
+    .product__pres :nth-child(3) {
+        order: 3;
+    }
+
+    .product__pres :nth-child(4) {
+        order: 4;
+    }
+
+    .product__pres :nth-child(5) {
+        order: 5;
+    }
+
+    .product__pres :nth-child(6) {
+        order: 6;
+    }
+
+    .citrus {
+        display: flex;
+        background-image: url(../img/citrus.webp);
+        background-position: center 15%;
+        background-size: cover;
+        height: 450px;
+    }
+
+    .beerguy {
+        display: flex;
+        background-image: url(../img/beer.webp);
+        background-position: center center;
+        background-size: cover;
+        height: 450px;
+    }
+
+    .paleale__showcase {
+        height: 450px;
+    }
+
+    .pilsner__showcase {
+        height: 450px;
+    }
+
+    .product__text {
+        background-color: #f1eeeb;
+    }
+
+    .forside__teaser {
+        font-size: 1.2rem;
+        margin: auto;
+        padding: 2rem 5rem;
+    }
+
+    .forside__teaser h1 {
+        font-size: 4rem;
+        padding: 2rem 0;
+    }
+
+    .beerbar {
+        height: 800px;
+        font-size: 1.5rem;
+    }
+
+    /* Product page */
+
+    .product__section {
+        margin-left: auto;
+        grid-area: product;
+    }
+
+    .product__site {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 300px 1fr;
+        grid-template-areas:
+            "filler title"
+            "sort product";
+        align-items: start;
+    }
+
+    .filler {
+        grid-area: filler;
+    }
+
+    #product__pagetitle {
+        grid-area: title;
+        padding: 10rem 0 1rem 2rem;
+        font-size: 6rem;
+    }
+
+    .product__sort {
+        grid-area: sort;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product__sort button {
+        font-size: 1.7rem;
+        letter-spacing: -2px;
+        max-width: 100%;
+        font-weight: 600;
+    }
+
+    .button1 {
+        font-size: 1.4rem;
+    }
+
+    .button2 img {
+        width: 50%;
+    }
+
+    /* -------------------------
+---------Bar & Butik-------- 
+------------------------- */
+
+    .bar__hero {
+        height: 740px;
+    }
+
+    .bar__header {
+        font-size: 3rem;
+        padding: 17rem 0;
+    }
+
+    .bar__address {
+        font-size: 1rem;
+    }
+
+    .bar__img-selection {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .beer__header h1 {
+        font-size: 4rem;
+    }
+
+/* -------------------------
+---------Alkoholfri øl------ 
+------------------------- */
+.alkoholfri {
+    padding: 5rem 3rem;
+}
+
+.alkoholfri h1 {
+    font-size: 2.5rem;
+}
+
+.alkoholfri h2 {
+    font-size: 1.5rem;
+}
+
+.alkoholfri h3 {
+    font-size: 1rem;
+}
+
+.alkoholfri p {
+    padding-bottom: 1rem;
+}
+
+.slider-header {
+    padding: 2rem;
+}
+
+.slider-header h1 {
+    padding: 2rem 3rem;
+    font-size: 3.5rem;
+}
+
+.slider-header p {
+    padding: 0 3rem;
+    font-size: 1.2rem;
+}
+
+    .beer-slider {
+        height: 600px;
+        align-items: center;
+        display: flex;
+    }
+
+    .mybeers {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    }
+
+    .beer-header {
+        align-items: flex-start;
+    }
+    
+    .beer-header p {
+    padding: 0;
+    text-align: left;
+    }
+
+    .beer-header h1 {
+        font-size: 4rem;
+        padding-bottom: 1rem;
+    }
+    
+    .beer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    }
+
+    .beer-line2 {
+        border-right: 1.3px solid var(--clr-background1);
+        height: 100%;
+    }
+
+    /* Footer */
+
+    .footer__primary, 
+    .footer_secondary
+    {
+        display: none;
+    }
+
+    .footer__desktop {
+        background-color: var(--clr-footer-main1);
+        color: var(--clr-text-white);
+        padding: 2rem;
+        margin: auto;   
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__first {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 10%;
+        margin: auto;
+    }
+
+    .footer__links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 450px;
+        font-weight: 300;
+    }
+
+    .footer__link1 {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8rem;
+        font-weight: 300;
+    }
+
+    .footer__link1 a {
+        padding-left: 1rem;
+    }
+
+    .footer__link1 h2 {
+        padding-bottom: 2rem;
+        font-size: 1rem;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .footer__link1 h3 {
+        font-weight: 300;
+        color: rgba(245, 245, 245, 0.667);
+        padding: 5px 0 10px 0;
+    }
+
+    .footer__link2,
+    .footer__link3,
+    .footer__link4 {
+        padding: 1rem 2rem;
+        text-transform: uppercase;
+        font-weight: 300;
+    }
+
+    .contact__info1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 1rem;
+        width: 500px;
+    }
+
+    .contact__info1 h2 {
+        padding-bottom: 3rem;
+        text-transform: uppercase;
+        font-weight: 300;
+
+    }
+
+    .footer__line {
+        border: 1px solid var(--clr-footer-secondary1);
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+
+    .footer__logo {
+        text-transform: uppercase;
+        font-weight: 300;
+    }
+
+    .footer__flexitems {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        font-weight: 200;
+    }
+
+    .footer_secondary-full {
+        background-color: var(--clr-footer-secondary1);
+        color: var(--clr-text-white);
+        padding: 2rem;
+        display: flex;
+    }
+}
+
+@media screen and (min-width:1280px) {
+
+    /* Header */
+    
+    .col1,
+    .col2 {
+        padding: 0 6rem;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 1.2rem;
+    }
+
+    .header__container a {
+        font-size: 1.2rem;
+    }
+
+    /* Front page */
+
+    .page__title {
+        padding-bottom: 10rem;
+    }
+
+    .page__title h1 {
+        padding-top: 7rem;
+        font-size: 6rem;
+    }
+
+    .page__title hr {
+        width: 60%;
+    }
+
+    .hero__section {
+        height: 1000px;
+    }
+
+    .hero__section h2 {
+        padding: 8rem 0 2rem 0;
+    }
+
+    .product__content {
+        font-size: 1.5rem;
+        padding: 0 20rem 0 5rem;
+    }
+
+    .product__pres {
+        padding: 2rem 8rem;
+    }
+
+    .forside__teaser {
+        font-size: 1.5rem;
+        margin: auto;
+        padding: 10rem 25rem;
+    }
+
+    .alkoholfri {
+        padding: 7rem 3rem;
+    }
+    
+    .alkoholfri h1 {
+        font-size: 3rem;
+    }
+
+    .slider-header h1 {
+        padding: 3rem 4rem;
+        font-size: 3.5rem;
+    }
+    
+    .slider-header p {
+        padding: 0 4rem;
+    }
+    
+    .beerbar {
+        height: 960px;
+        font-size: 1.7rem;
+    }
+
+    .product__section {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: end;
+    }
+
+    .paleale__text {
+        font-size: 1.3rem;
+    }
+
+    .product__text {
+        font-size: 1.3rem;
+    }
+
+
+    /* -------------------------
+---------Bar & Butik-------- 
+------------------------- */
+
+    .bar__hero {
+        height: 830px;
+    }
+
+    .bar__header {
+        font-size: 4rem;
+        padding: 17rem 0;
+    }
+
+    .bar__address {
+        padding-left: 6rem;
+    }
+
+    .bar__teaser h1 {
+        font-size: 4rem;
+    }
+
+    .bar__teaser p {
+        max-width: 700px;
+        font-size: 1.5rem;
+        padding-top: 3rem;
+    }
+
+    .bar__img-selection {
+        max-width: 1200px;
+    }
+
+    .bar__img-left {
+        width: 600px;
+    }
+
+    .bar__img-right {
+        width: 600px;
+    }
+
+    /* Alkoholfri øl */
+
+
+    .beer-slider {
+        height: 800px;
+        align-items: center;
+        display: flex;
+    }
+
+    /* Footer */
+
+    .footer__first {
+        display: flex;
+        margin: auto;
+        justify-content: space-between;
+    }
+
+    .footer__desktop p,
+    .footer__desktop a {
+        font-size: 1rem;
+    }
+
+    .footer__links {
+        width: 800px;
+    }
+
+    .footer__link1 h2,
+    .footer__link2 a,
+    .footer__link3 a,
+    .footer__link4 a {
+        font-size: 1.5rem;
+    }
+
+    .footer__logo {
+        margin: auto;
+        width: 1300px;
+        padding-top: 15rem;
+    }
+}
